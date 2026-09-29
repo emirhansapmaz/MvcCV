@@ -28,6 +28,11 @@ namespace MvcCV.Controllers
             return RedirectToAction("Index");
         }
 
-
+        public ActionResult DeneyimSil(int id)
+        {
+            TblDeneyim t = repo.Find(x => x.Id == id);
+            repo.delete(t);
+            return RedirectToAction("Index");
+        }
     }
 }

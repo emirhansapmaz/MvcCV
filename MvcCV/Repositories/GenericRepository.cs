@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using MvcCV.Models;
 namespace MvcCV.Repositories
@@ -29,6 +30,10 @@ namespace MvcCV.Repositories
         public void Update(T p)
         {
             context.SaveChanges();
+        }
+        public T Find(Expression<Func<T, bool>> where)
+        {
+            return context.Set<T>().FirstOrDefault(where);
         }
     }
 }
