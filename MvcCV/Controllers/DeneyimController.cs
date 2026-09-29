@@ -34,10 +34,23 @@ namespace MvcCV.Controllers
             repo.delete(t);
             return RedirectToAction("Index");
         }
+        [HttpGet]
         public ActionResult DeneyimGetir(int id)
         {
             TblDeneyim t = repo.Find(x => x.Id ==id);
             return View(t);
         }
-    }
+        [HttpPost]
+        public ActionResult DeneyimGetir(TblDeneyim p)
+        {
+            TblDeneyim t = repo.Find(x => x.Id == p.Id);
+            t.Baslik = p.Baslik;
+            t.AltBaslik = p.AltBaslik;
+            t.Tarih = p.Tarih;
+            t.Aciklama = p.Aciklama;
+            repo.Update(t);
+
+            return RedirectToAction("Index");
+        }
+    }   
 }
