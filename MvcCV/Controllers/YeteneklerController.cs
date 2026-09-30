@@ -28,5 +28,11 @@ namespace MvcCV.Controllers
             repo.Insert(p);
             return RedirectToAction("Index");
         }
+        public IActionResult YetenekSil(int id)
+        {
+            TblYetenekler t = repo.Find(x => x.Id == id);
+            repo.delete(t);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -30,8 +30,8 @@ namespace MvcCV.Controllers
 
         public ActionResult DeneyimSil(int id)
         {
-            TblDeneyim t = repo.Find(x => x.Id == id);
-            repo.delete(t);
+            var yetenek = repo.Find(x => x.Id == id);
+            repo.delete(yetenek);
             return RedirectToAction("Index");
         }
         [HttpGet]
