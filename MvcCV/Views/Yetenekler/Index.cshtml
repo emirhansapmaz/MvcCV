@@ -11,6 +11,9 @@
 @{
     string renk = "";
 }
+@{
+    string labelrenk = "";
+}
 
 
 <!DOCTYPE html>
@@ -29,6 +32,9 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <a href="/Yetenekler/YetenekEkle/" class="btn btn-info">Yetenek Ekle</a>
+                                <br />
+                                <br />
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
@@ -36,6 +42,8 @@
                                             <th>Yetenek</th>
                                             <th>Derece</th>
                                             <th style="width: 40px">Oran</th>
+                                            <th>Düzenle</th>
+                                            <th>Sil</th>              
                                         </tr>
                                     </thead>
                                     <tbody> 
@@ -44,14 +52,17 @@
                                             if (item.Oran < 30)
                                             {
                                                 renk = "progress-bar bg-danger";
+                                                labelrenk = "badge bg-danger";
                                             }
                                             else if (item.Oran >= 30 && item.Oran < 70)
                                             {
                                                 renk = "progress-bar bg-warning";
+                                                labelrenk = "badge bg-warning";
                                             }
                                             else
                                             {
                                                 renk = "progress-bar bg-success";
+                                                labelrenk = "badge bg-success";
                                             }
                                             <tr>
                                                 <td>@item.Id</td>
@@ -61,7 +72,19 @@
                                                         <div class="@renk" style="width: @item.Oran%"></div>
                                                     </div>
                                                 </td>
-                                                <td><span class="badge bg-danger">@item.Oran%</span></td>
+                                                <td><span class="@labelrenk">@item.Oran%</span></td>
+                                                
+                                                 <td><a class="btn btn-info btn-sm" href="#">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Düzenle
+                          </a></td>
+                                           <td> <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Sil
+                          </a>
+                          </td>
                                             </tr>
                                         }
                                         

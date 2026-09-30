@@ -17,5 +17,16 @@ namespace MvcCV.Controllers
             var yetenekler = repo.List();
             return View(yetenekler);
         }
+        [HttpGet]
+        public IActionResult YetenekEkle()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult YetenekEkle(TblYetenekler p)
+        {
+            repo.Insert(p);
+            return RedirectToAction("Index");
+        }
     }
 }
