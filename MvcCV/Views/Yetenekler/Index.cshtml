@@ -7,6 +7,12 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+
+@{
+    string renk = "";
+}
+
+
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini">
@@ -35,15 +41,27 @@
                                     <tbody> 
                                         @foreach (var item in Model)
                                         {
+                                            if (item.Oran < 30)
+                                            {
+                                                renk = "progress-bar bg-danger";
+                                            }
+                                            else if (item.Oran >= 30 && item.Oran < 70)
+                                            {
+                                                renk = "progress-bar bg-warning";
+                                            }
+                                            else
+                                            {
+                                                renk = "progress-bar bg-success";
+                                            }
                                             <tr>
                                                 <td>@item.Id</td>
                                                 <td>@item.Yetenek</td>
                                                 <td>
                                                     <div class="progress progress-xs">
-                                                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                                        <div class="@renk" style="width: @item.Oran%"></div>
                                                     </div>
                                                 </td>
-                                                <td><span class="badge bg-danger">55%</span></td>
+                                                <td><span class="badge bg-danger">@item.Oran%</span></td>
                                             </tr>
                                         }
                                         
