@@ -34,5 +34,23 @@ namespace MvcCV.Controllers
             repo.delete(t);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult YetenekDuzenle(int id)
+        {
+            var yetenek = repo.Find(x => x.Id == id);
+            return View(yetenek);
+        }
+        [HttpPost]
+        public IActionResult YetenekDuzenle(TblYetenekler p)
+        {
+            var y= repo.Find(x => x.Id == p.Id);
+            y.Yetenek = p.Yetenek;
+            y.Oran = p.Oran;
+            repo.Update(y);
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

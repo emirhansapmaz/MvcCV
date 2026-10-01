@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Egitim Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h4>Yeni Eğitim Ekleme Sayfası</h4>
+<form class="form-group" method="post" action="/Egitim/EgitimEkle">
+    <br />
+    <input type="text" name="Baslik" class="form-control" placeholder="Başlık girin" />
+    <br />
+    <input type="text" name="AltBaslik" class="form-control" placeholder="Alt başlık girin" />
+    <br />
+    <input type="text" name="AltBaslik2" class="form-control" placeholder="Alt başlık 2 girin" />
+    <br />
+    <input type="text" name="Tarih" class="form-control" placeholder="Tarih girin" />
+    <br />
+    <button type="submit" class="btn btn-primary">Eğitim Ekle</button>
+</form> 
