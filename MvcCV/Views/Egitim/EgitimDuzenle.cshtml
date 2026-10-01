@@ -10,14 +10,15 @@
 <br />
 <h4>Eğitim Güncelleme Sayfası</h4>
 <form method="post">
-    @Html.Label("Eğitim ID")
-    @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
-<br />
+   
     @Html.Label("Başlık")
     @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
     <br />
     @Html.Label("Alt Başlık")
     @Html.TextBoxFor(x => x.AltBaslik, new { @class = "form-control" })
+    <br />
+    @Html.Label("Alt Başlık 2")
+    @Html.TextBoxFor(x => x.AltBaslik2, new { @class = "form-control" })
     <br />
     @Html.Label("GNO")
     @Html.TextBoxFor(x => x.Gno, new { @class = "form-control" })

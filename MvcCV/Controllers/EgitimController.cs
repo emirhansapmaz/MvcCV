@@ -26,6 +26,10 @@ namespace MvcCV.Controllers
         [HttpPost]
         public IActionResult EgitimEkle(TblEgitim p)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("EgitimEkle");
+            }
             repo.Insert(p);
             return RedirectToAction("Index");
         }

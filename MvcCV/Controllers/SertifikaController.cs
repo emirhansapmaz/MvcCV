@@ -1,0 +1,12 @@
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace MvcCV.Controllers
+{
+    public class SertifikaController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+}
