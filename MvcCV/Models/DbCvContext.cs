@@ -155,6 +155,9 @@ public partial class DbCvContext : DbContext
             entity.Property(e => e.Aciklama)
                 .HasMaxLength(250)
                 .IsUnicode(false);
+            entity.Property(e => e.Tarih)
+                .HasMaxLength(50)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<TblYetenekler>(entity =>

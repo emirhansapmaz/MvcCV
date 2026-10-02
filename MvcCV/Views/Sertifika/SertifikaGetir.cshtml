@@ -1,0 +1,24 @@
+﻿@model MvcCV.Models.TblSertifikalar;
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Sertifika Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>Sertifika Güncelleme Sayfası</h4>
+<form method="post">
+
+    @Html.Label("Sertifika Açıklaması")
+    @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+    <br />
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+
+    <br />
+    <button type="submit" class="btn btn-success">Güncelle</button>
+    <a href="/Sertifika/SertifikaSil/@Model.Id" class="btn btn-danger">Sil</a>
+</form>
