@@ -62,13 +62,9 @@
                             <a href="mailto:name@email.com">@x.Mail</a>
                         </div>
                         <p class="lead mb-5">@x.Aciklama</p>
-                        <div class="social-icons">
-                            <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
-                            <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        </div>
+                   @await Component.InvokeAsync("SosyalMedya")
                     </div>
+                
                 </section>
             }
             <hr class="m-0" />
@@ -107,7 +103,11 @@
             @await Component.InvokeAsync("Iletisim")
 
         </section>
-    </div>
+       
+       
+           
+
+        
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

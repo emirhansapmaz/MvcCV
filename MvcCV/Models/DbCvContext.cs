@@ -29,6 +29,8 @@ public partial class DbCvContext : DbContext
 
     public virtual DbSet<TblSertifikalar> TblSertifikalars { get; set; }
 
+    public virtual DbSet<TblSosyalMedya> TblSosyalMedyas { get; set; }
+
     public virtual DbSet<TblYetenekler> TblYeteneklers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -156,6 +158,21 @@ public partial class DbCvContext : DbContext
                 .HasMaxLength(250)
                 .IsUnicode(false);
             entity.Property(e => e.Tarih)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<TblSosyalMedya>(entity =>
+        {
+            entity.ToTable("TblSosyalMedya");
+
+            entity.Property(e => e.Ad)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Icon)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Link)
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
