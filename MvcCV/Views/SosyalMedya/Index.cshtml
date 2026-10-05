@@ -33,6 +33,7 @@
                                         <tr>
                                             
                                             <th>Sosyal Medya</th>
+                                            <th>Durum</th>
                                             <th>Düzenle</th>
                                             <th>Sil</th>
                                         </tr>
@@ -41,7 +42,11 @@
                                         @foreach (var item in Model)                      {
                                             <tr>
                                                 
+                                                
+                                                
                                                 <td>@item.Ad</td>
+                                                 
+                                                <td>@item.Durum</td>
                                               
                                               
                                                 <td>
@@ -52,7 +57,7 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-danger btn-sm" href="/SosyalMedya/Sil/@item.Id">
+                                                    <a class="btn btn-danger btn-sm" href="/SosyalMedya/SosyalMedyaSil/@item.Id">
                                                         <i class="fas fa-trash">
                                                         </i>
                                                         Sil

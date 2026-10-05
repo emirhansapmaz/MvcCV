@@ -42,6 +42,7 @@ namespace MvcCV.Controllers
         {
             var sosyalMedya = repo.Find(x => x.Id == p.Id);
             sosyalMedya.Ad = p.Ad;
+            sosyalMedya.Durum = true;
             sosyalMedya.Link = p.Link;
             sosyalMedya.Icon = p.Icon;
             repo.Update(sosyalMedya);

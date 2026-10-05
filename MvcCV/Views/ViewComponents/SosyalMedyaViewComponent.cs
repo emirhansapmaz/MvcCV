@@ -1,25 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MvcCV.Models; // Context klasörünüz
+using MvcCV.Models;
+using MvcCV.Repositories;
 using System.Linq;
 
-// ViewComponent sınıfından miras alması şarttır
 public class SosyalMedyaViewComponent : ViewComponent
 {
-    private readonly DbCvContext db;
+    // Repository nesnemizi oluşturuyoruz
+    GenericRepository<TblSosyalMedya> repo = new GenericRepository<TblSosyalMedya>();
 
-    public SosyalMedyaViewComponent(DbCvContext context)
-    {
-        db = context;
-    }
-
-    // 'Invoke' metodu eskiden Controller'a yazdığınız metodun görevini üstlenir
     public IViewComponentResult Invoke()
     {
-        // Kendi tablonuzdan veriyi çekin
-        var degerler = db.TblSosyalMedyas.ToList();
+        // Hem verileri repo'dan çekiyoruz hem de sadece Durum'u True olanları filtreliyoruz
+        var degerler = repo.List().Where(x => x.Durum == true).ToList();
 
-        // Not: Klasör taşıma zahmetine girmemek için View'ın tam yolunu belirtiyoruz
+       
+
         return View("~/Views/Default/SosyalMedya.cshtml", degerler);
     }
 }
