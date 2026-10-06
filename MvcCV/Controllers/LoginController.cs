@@ -51,11 +51,16 @@ namespace MvcCV.Controllers
         }
 
         // 3. Çıkış yapma metodu
-        [HttpPost]
-        public async Task<IActionResult> Logout()
+        [HttpGet]
+        public async Task<IActionResult> LogOut()
         {
+            // 1. Tarayıcıdaki yetkilendirme çerezini (Cookie) siler
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // 2. Varsa Session (oturum) verilerini tamamen temizler
             HttpContext.Session.Clear();
+
+            // 3. Çıkış yaptıktan sonra giriş ekranına geri yönlendirir
             return RedirectToAction("Index", "Login");
         }
     }
