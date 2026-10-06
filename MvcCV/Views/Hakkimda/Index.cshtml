@@ -1,28 +1,35 @@
-﻿@*
-    
-*@
+﻿@using MvcCV.Models;
+@model List<TblHakkindum>
+
 @{
-    ViewBag.title = "Index";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Hakkımda Menüsü</h2>
-<table class="table table-bordered table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Ad </th>
-            <th>Şehir</th>
-        </tr>
+<br />
+<h2>Profil Düzenleme Sayfası</h2>
+<br />
+<form method="post">
+@foreach (var item in Model)
+{
+        <input type="hidden" name="Id" value="@item.Id" />
 
-   <tr>
-        <td>1</td>
-        <td>Emirhan </td>
-        <td>Hatay</td>
-</tr>
-    
-    
-    <tr>
-        <td>2</td>
-        <td>Aygen </td>
-        <td>Ordu</td>
-    </tr>
+    <label> Ad</label>
+    <input type="text" class="form-control" name="Ad" value="@item.Ad" />
+    <label>Soyad</label>
+    <input type="text" class="form-control" name="Soyad" value="@item.Soyad" />
+    <label>Adres</label>
+    <input type="text" class="form-control" name="Adres" value="@item.Adres" />
+    <label>Mail</label>
+    <input type="text" class="form-control" name="Mail" value="@item.Mail" />
+    <label>Telefon</label>
+    <input type="text" class="form-control" name="Telefon" value="@item.Telefon" />
+    <label>Resim</label>
+    <input type="text" class="form-control" name="Resim" value="@item.Resim" />
+    <label>Açıklama</label>
+    <textarea rows="5" class="form-control" name="Aciklama">@item.Aciklama</textarea>
+   
+}
+<button class="btn btn-success">Güncelle</button>
+
+</form>
