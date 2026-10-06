@@ -1,0 +1,61 @@
+﻿@using MvcCV.Models;
+@model List<TblIletisim>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- html, head veya body etiketleri burada kullanılmaz, doğrudan içeriğe başlanır -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tab-content">
+
+                            <div class="tab-pane active" id="timeline">
+                                <!-- The timeline -->
+                                <div class="timeline timeline-inverse">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="time-label">
+                                            <span class="bg-danger">
+                                                @item.Tarih
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <!-- BİRİNCİ AÇIK DİV -->
+                                            <i class="fas fa-comments bg-warning"></i>
+
+                                            <div class="timeline-item">
+                                                <!-- İKİNCİ AÇIK DİV -->
+                                                <span class="time"><i class="far fa-clock"></i> @item.Mail</span>
+                                                <!-- Ad Soyad ve Konu arasına bir adet boşluk eklendi -->
+                                                <h3 class="timeline-header"><a href="#">@item.Kimden</a> @item.Konu</h3>
+
+                                                <div class="timeline-body">
+                                                    @item.Mesaj
+                                                </div>
+
+                                                <div class="timeline-footer">
+                                                   
+                                                </div>
+                                            </div> <!-- İKİNCİ AÇIK DİVİN KAPATILMASI EKLENDİ -->
+                                        </div> <!-- BİRİNCİ AÇIK DİVİN KAPATILMASI EKLENDİ -->
+                                    }
+                                </div>
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
