@@ -366,16 +366,54 @@ Tarayıcınız üzerinden aşağıdaki adreslere erişebilirsiniz:
 
 ## 📸 Ekran Görüntüleri
 
-> 💡 *Aşağıdaki bölümlere uygulamanızdan aldığınız ekran görüntülerini ekleyebilirsiniz.*
+> 💡 *Uygulamanın modern koyu temalı ziyaretçi vitrini ve yetkilendirilmiş yönetim paneline ait güncel ekran görüntüleri:*
 
-| Bölüm | Önizleme |
-| :--- | :--- |
-| **Ziyaretçi Arayüzü (Ana Sayfa & Hakkımda)** | <img src="https://via.placeholder.com/800x450/0f172a/38bdf8?text=Ziyaretci+Vitrin+Arayuzu+(Koyu+Tema)" alt="Vitrin Arayüzü" width="100%" /> |
-| **Deneyimler & Eğitim Zaman Çizelgesi** | <img src="https://via.placeholder.com/800x450/0f172a/38bdf8?text=Deneyimler+ve+Egitim+Timeline" alt="Deneyim ve Eğitim" width="100%" /> |
-| **Yetenekler (Progress Bars) & Bento Hobiler** | <img src="https://via.placeholder.com/800x450/0f172a/38bdf8?text=Yetenekler+Progress+Bar+%26+Bento+Hobiler" alt="Yetenekler ve Hobiler" width="100%" /> |
-| **Admin Giriş Sayfası** | <img src="https://via.placeholder.com/800x450/0f172a/38bdf8?text=Admin+Giris+Ekrani+(Cookie+Auth)" alt="Admin Giriş" width="100%" /> |
-| **AdminLTE Yönetim Paneli** | <img src="https://via.placeholder.com/800x450/0f172a/38bdf8?text=AdminLTE+Yonetim+Paneli+Dashboard" alt="AdminLTE Panel" width="100%" /> |
-| **İçerik Düzenleme & CRUD İşlemleri** | <img src="https://via.placeholder.com/800x450/0f172a/38bdf8?text=Icerik+Duzenleme+ve+CRUD+Ekrani" alt="CRUD Yönetimi" width="100%" /> |
+### 🌐 Ziyaretçi Vitrin Arayüzü (Public Portfolio)
+
+#### 🔹 1. Ana Sayfa & Profil Tanıtımı
+Modern koyu tema, interaktif sol gezinme menüsü, çalışma durumu ("Müsait") rozeti, biyografi ve dinamik sosyal medya bağlantıları:
+
+<p align="center">
+  <img src="screenshots/portfolio-home.png" alt="Ziyaretçi Vitrin Arayüzü - Ana Sayfa ve Hakkımda" width="100%" />
+</p>
+
+---
+
+#### 🔹 2. Eğitim Hayatı & Yetenekler Bölümü
+Zaman çizelgesi (timeline) formatında akademik geçmiş, GNO başarı rozeti ve uzmanlık teknolojileri vitrini:
+
+<p align="center">
+  <img src="screenshots/portfolio-education.png" alt="Ziyaretçi Vitrin Arayüzü - Eğitim ve Yetenekler" width="100%" />
+</p>
+
+---
+
+### 🔒 Yönetim Paneli (Admin CMS)
+
+#### 🔹 3. Güvenli Yönetici Giriş Ekranı (Login)
+Cookie & Session tabanlı kimlik doğrulama altyapısına sahip, cam efektli (glassmorphism) şık giriş konsolu:
+
+<p align="center">
+  <img src="screenshots/admin-login.png" alt="Admin Giriş Ekranı" width="75%" />
+</p>
+
+---
+
+#### 🔹 4. Yönetim Konsolu & Profil Bilgileri
+Ziyaretçi arayüzündeki tüm kişisel bilgilerin, iletişim detaylarının ve biyografinin tek merkezden anlık yönetimi:
+
+<p align="center">
+  <img src="screenshots/admin-profile.png" alt="Admin Yönetim Konsolu - Profil ve Hakkımda Düzenleme" width="100%" />
+</p>
+
+---
+
+#### 🔹 5. Yetenek & Beceri Yönetimi (CRUD)
+Veritabanındaki teknik yeteneklerin dinamik listesi, seviye çubukları, yüzde oranları, yeni kayıt ekleme, düzenleme ve silme işlemleri:
+
+<p align="center">
+  <img src="screenshots/admin-skills.png" alt="Admin CRUD Yönetimi - Yetenek ve Beceri Listesi" width="100%" />
+</p>
 
 ---
 
