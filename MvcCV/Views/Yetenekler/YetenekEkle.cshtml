@@ -1,18 +1,48 @@
-﻿@model MvcCV.Models.TblYetenekler;
+@model MvcCV.Models.TblYetenekler;
+
 @{
-    ViewBag.Title = "DeneyimEkle";
+    ViewBag.Title = "Yeni Yetenek Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h4>Yetenek Ekleme Sayfası</h4>
-<form method="post">
-   
-    @Html.Label("Yetenek Açıklaması")
-    @Html.TextBoxFor(x => x.Yetenek, new { @class = "form-control" })
-    <br />
-    @Html.Label("Derece")
-    @Html.TextBoxFor(x => x.Oran, new { @class = "form-control" })
-   
-    <br />
-    <button type="submit" class="btn btn-primary">Ekle</button>
-</form>
+
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Yeni Yetenek Ekle</h2>
+                <p class="modern-card-subtitle">Portfolyonuza yeni bir uzmanlık alanı ve seviye oranı ekleyin.</p>
+            </div>
+        </div>
+        <a href="/Yetenekler/Index" class="btn-modern-outline">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Listeye Dön</span>
+        </a>
+    </div>
+
+    <div class="modern-card-body">
+        <form method="post">
+            <div class="form-grid-2">
+                <div class="admin-form-group">
+                    @Html.Label("Yetenek", "Yetenek / Teknoloji Adı", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Yetenek, new { @class = "admin-form-control", placeholder = "Örn: C#, React, ASP.NET Core" })
+                </div>
+
+                <div class="admin-form-group">
+                    @Html.Label("Oran", "Yetkinlik Yüzdesi (0 - 100)", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Oran, new { @class = "admin-form-control", placeholder = "Örn: 85", type = "number", min = "0", max = "100" })
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="/Yetenekler/Index" class="btn-modern-outline">İptal</a>
+                <button type="submit" class="btn-modern-primary">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Yeteneği Kaydet</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,23 +1,50 @@
-﻿
 @model MvcCV.Models.TblYetenekler;
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
-    ViewBag.Title = "YetenekDuzenle";
+    ViewBag.Title = "Yetenek Düzenle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h4>Yetenek Güncelleme Sayfası</h4>
-<form method="post">
 
-    @Html.Label("Yetenek Açıklaması")
-    @Html.TextBoxFor(x => x.Yetenek, new { @class = "form-control" })
-    <br />
-    @Html.Label("Derece")
-    @Html.TextBoxFor(x => x.Oran, new { @class = "form-control" })
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Yetenek Güncelle</h2>
+                <p class="modern-card-subtitle">Mevcut teknik beceriyi ve seviye oranını güncelleyin.</p>
+            </div>
+        </div>
+        <a href="/Yetenekler/Index" class="btn-modern-outline">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Listeye Dön</span>
+        </a>
+    </div>
 
-    <br />
-    <button type="submit" class="btn btn-success">Güncelle</button>
-</form>
+    <div class="modern-card-body">
+        <form method="post">
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="form-grid-2">
+                <div class="admin-form-group">
+                    @Html.Label("Yetenek", "Yetenek Açıklaması", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Yetenek, new { @class = "admin-form-control", placeholder = "Yetenek adı" })
+                </div>
+
+                <div class="admin-form-group">
+                    @Html.Label("Oran", "Yetkinlik Yüzdesi (0 - 100)", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Oran, new { @class = "admin-form-control", placeholder = "Derece oranı", type = "number", min = "0", max = "100" })
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="/Yetenekler/Index" class="btn-modern-outline">İptal</a>
+                <button type="submit" class="btn-modern-success">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Güncellemeyi Kaydet</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
