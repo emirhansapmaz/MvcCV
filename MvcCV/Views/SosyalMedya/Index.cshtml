@@ -1,118 +1,145 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblSosyalMedya>
 
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sosyal Medya Hesapları";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-        <!-- Navbar -->
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Sosyal Medya Hesap Listem</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <button  class="btn btn-info" data-toggle="modal" data-target="#modal1">
-                                    Yeni Sosyal Medya Hesabı Ekle
-                                </button>
-                                <br />
-                                <br />
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            
-                                            <th>Sosyal Medya</th>
-                                            <th>Durum</th>
-                                            <th>Düzenle</th>
-                                            <th>Sil</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)                      {
-                                            <tr>
-                                                
-                                                
-                                                
-                                                <td>@item.Ad</td>
-                                                 
-                                                <td>@item.Durum</td>
-                                              
-                                              
-                                                <td>
-                                                    <a class="btn btn-info btn-sm" href="/SosyalMedya/SosyalMedyaGuncelle/@item.Id">
-                                                        <i class="fas fa-pencil-alt">
-                                                        </i>
-                                                        Düzenle
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-danger btn-sm" href="/SosyalMedya/SosyalMedyaSil/@item.Id">
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                        Sil
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        }
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-share-nodes"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Sosyal Medya Hesapları</h2>
+                <p class="modern-card-subtitle">Profilinizde gösterilecek sosyal ağ bağlantılarını ve durumlarını yönetin.</p>
+            </div>
+        </div>
+        <button class="btn-modern-primary" data-bs-toggle="modal" data-bs-target="#modalSocial" data-toggle="modal" data-target="#modalSocial">
+            <i class="fa-solid fa-plus"></i>
+            <span>Yeni Hesap Ekle</span>
+        </button>
+    </div>
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- /.card -->
+    <div class="modern-card-body p-0">
+        <div class="modern-table-responsive">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th style="width: 70px;">ID</th>
+                        <th>Platform / İsim</th>
+                        <th>Bağlantı URL</th>
+                        <th>İkon</th>
+                        <th>Durum</th>
+                        <th style="width: 170px;" class="text-end">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><span class="admin-badge admin-badge-gray">#@item.Id</span></td>
+                            <td class="fw-bold text-dark">
+                                <i class="@(string.IsNullOrEmpty(item.Icon) ? "fa-solid fa-link" : item.Icon) text-primary me-2"></i>
+                                @item.Ad
+                            </td>
+                            <td>
+                                <a href="@item.Link" target="_blank" class="text-muted text-decoration-none small">
+                                    @item.Link
+                                    <i class="fa-solid fa-arrow-up-right-from-square ms-1 text-primary"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="admin-badge admin-badge-gray">
+                                    <code>@item.Icon</code>
+                                </span>
+                            </td>
+                            <td>
+                                @if (item.Durum == true)
+                                {
+                                    <span class="admin-badge admin-badge-success">
+                                        <i class="fa-solid fa-check"></i> Aktif
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="admin-badge admin-badge-danger">
+                                        <i class="fa-solid fa-xmark"></i> Pasif
+                                    </span>
+                                }
+                            </td>
+                            <td class="text-end">
+                                <div class="d-inline-flex gap-2">
+                                    <a class="btn-action-edit" href="/SosyalMedya/SosyalMedyaGuncelle/@item.Id" title="Düzenle">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        <span>Düzenle</span>
+                                    </a>
+                                    <a class="btn-action-delete" href="/SosyalMedya/SosyalMedyaSil/@item.Id" title="Sil" onclick="return confirm('Bu sosyal medya hesabını devre dışı bırakmak istediğinize emin misiniz?');">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                        <span>Sil</span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Yeni Sosyal Medya Hesabı Ekleme Modal -->
+<div class="modal fade" id="modalSocial" tabindex="-1" aria-labelledby="modalSocialLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 18px; overflow: hidden;">
+            <div class="modal-header bg-dark text-white p-4">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="admin-brand-icon">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div>
+                        <h5 class="modal-title fw-bold mb-0" id="modalSocialLabel">Yeni Sosyal Medya Hesabı</h5>
+                        <p class="text-white-50 small mb-0">Portfolyonuza yeni bir hesap bağlayın</p>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
-        </section>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" data-dismiss="modal" aria-label="Kapat"></button>
+            </div>
 
-    <div class="modal" id="modal1">
-        <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title">Yeni Sosyal Medya Hesabı Ekleme Paneli</h4>
-            
+            <form method="post" action="/SosyalMedya/SosyalMedyaEkle">
+                <div class="modal-body p-4">
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="ad">
+                            <i class="fa-solid fa-tag text-primary me-1"></i> Platform Adı
+                        </label>
+                        <input type="text" class="admin-form-control" id="ad" name="Ad" placeholder="Örn: GitHub, LinkedIn, Twitter" required />
+                    </div>
 
-</div>
-                    <form method="post" action="/SosyalMedya/SosyalMedyaEkle">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="ad">Sosyal Medya Adı</label>
-                                <input type="text" class="form-control" id="ad" name="Ad" placeholder="Sosyal Medya Adı">
-                            </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label" for="link">
+                            <i class="fa-solid fa-link text-primary me-1"></i> Profil URL Bağlantısı
+                        </label>
+                        <input type="text" class="admin-form-control" id="link" name="Link" placeholder="https://github.com/kullaniciadi" required />
+                    </div>
 
-                            <div class="form-group">
-                                <label for="link">Sosyal Medya Linki</label>
-                                <input type="text" class="form-control" id="link" name="Link" placeholder="Sosyal Medya Linki">
-                            </div>
+                    <div class="admin-form-group mb-0">
+                        <label class="admin-form-label" for="ikon">
+                            <i class="fa-solid fa-icons text-primary me-1"></i> FontAwesome İkon Class
+                        </label>
+                        <input type="text" class="admin-form-control" id="ikon" name="Icon" placeholder="Örn: fa-brands fa-github veya fab fa-github" required />
+                        <span class="text-muted small mt-1 d-block">Örn: <code>fa-brands fa-linkedin-in</code>, <code>fa-brands fa-github</code>, <code>fa-brands fa-x-twitter</code></span>
+                    </div>
+                </div>
 
-                            <!-- İkon kısmı modal-body içine taşındı -->
-                            <div class="form-group">
-                                <label for="ikon">Sosyal Medya İkonu</label>
-                                <input type="text" class="form-control" id="ikon" name="Ikon" placeholder="Sosyal Medya İkonu">
-                            </div>
-                        </div> <!-- modal-body burada kapanıyor -->
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                            <button type="submit" class="btn btn-primary">Ekle</button>
-                        </div>
-                    </form>
-   </div>
-
-
-</div>
-        <!-- /.content -->
+                <div class="modal-footer p-3 bg-light border-0">
+                    <button type="button" class="btn-modern-outline" data-bs-dismiss="modal" data-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn-modern-primary">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Hesabı Ekle</span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-</body>
-</html>
+</div>

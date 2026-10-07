@@ -1,24 +1,55 @@
-﻿@model MvcCV.Models.TblSosyalMedya;
-
+@model MvcCV.Models.TblSosyalMedya;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sosyal Medya Güncelle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<br />
-<h4>Sosyal Medya Güncelleme Sayfası</h4>
-<form method="post">
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Sosyal Medya Hesabı Güncelle</h2>
+                <p class="modern-card-subtitle">Mevcut sosyal ağ bağlantı bilgilerinizi düzenleyin.</p>
+            </div>
+        </div>
+        <a href="/SosyalMedya/Index" class="btn-modern-outline">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Listeye Dön</span>
+        </a>
+    </div>
 
-    @Html.Label("Sosyal Medya Adı")
-    @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
-    <br />
-    @Html.Label("Sosyal Medya Linki")
-    @Html.TextBoxFor(x => x.Link, new { @class = "form-control" })
-    <br />
-    @Html.Label("Sosyal Medya İkonu")
-    @Html.TextBoxFor(x => x.Icon, new { @class = "form-control" })
+    <div class="modern-card-body">
+        <form method="post">
+            @Html.HiddenFor(x => x.Id)
 
-    <br />
-    <button type="submit" class="btn btn-success">Güncelle</button>
-</form>
+            <div class="form-grid-2">
+                <div class="admin-form-group">
+                    @Html.Label("Ad", "Platform / Sosyal Medya Adı", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Ad, new { @class = "admin-form-control", placeholder = "Örn: LinkedIn" })
+                </div>
+
+                <div class="admin-form-group">
+                    @Html.Label("Icon", "FontAwesome İkon Kodu", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Icon, new { @class = "admin-form-control", placeholder = "Örn: fa-brands fa-linkedin" })
+                </div>
+            </div>
+
+            <div class="admin-form-group">
+                @Html.Label("Link", "Profil Bağlantı Adresi (URL)", new { @class = "admin-form-label" })
+                @Html.TextBoxFor(x => x.Link, new { @class = "admin-form-control", placeholder = "https://..." })
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="/SosyalMedya/Index" class="btn-modern-outline">İptal</a>
+                <button type="submit" class="btn-modern-success">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Güncellemeyi Kaydet</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
