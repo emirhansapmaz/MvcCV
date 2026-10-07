@@ -1,24 +1,51 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblHobilerim>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hobiler Düzenle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-   <br />
-<h2>Hobi Düzenleme Sayfası</h2>
-<br />
-<form method="post">
-@foreach (var item in Model)
-{
-        <input type="hidden" name="Id" value="@item.Id" />
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">İlgi Alanları & Hobiler</h2>
+                <p class="modern-card-subtitle">İş dışındaki ilgi alanlarınızı ve aktivitelerinizi buradan düzenleyin.</p>
+            </div>
+        </div>
+    </div>
 
-    <label>Açıklama 1</label>
-    <textarea rows="5" class="form-control" name="Aciklama1">@item.Aciklama1</textarea>
-    <label>Açıklama 2</label>
-    <textarea rows="5" class="form-control" name="Aciklama2">@item.Aciklama2</textarea>
-}
-<button class="btn btn-success">Güncelle</button>
+    <div class="modern-card-body">
+        <form method="post">
+            @foreach (var item in Model)
+            {
+                <input type="hidden" name="Id" value="@item.Id" />
 
-</form>
+                <div class="admin-form-group">
+                    <label class="admin-form-label">
+                        <i class="fa-solid fa-gamepad text-primary me-1"></i> Birincil İlgi Alanları (Açıklama 1)
+                    </label>
+                    <textarea rows="4" class="admin-form-control" name="Aciklama1" placeholder="Birincil hobileriniz ve aktiviteleriniz...">@item.Aciklama1</textarea>
+                </div>
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">
+                        <i class="fa-solid fa-headphones text-primary me-1"></i> İkincil İlgi Alanları (Açıklama 2)
+                    </label>
+                    <textarea rows="4" class="admin-form-control" name="Aciklama2" placeholder="Diğer ilgi duyduğunuz konular, sporlar veya sanat dalları...">@item.Aciklama2</textarea>
+                </div>
+            }
+
+            <div class="d-flex justify-content-end mt-4">
+                <button type="submit" class="btn-modern-success">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Hobileri Güncelle</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
