@@ -1,26 +1,74 @@
-﻿@model MvcCV.Models.TblEgitim;
+@model MvcCV.Models.TblEgitim;
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
-    ViewBag.Title = "Egitim Ekle";
+    ViewBag.Title = "Yeni Eğitim Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h4>Yeni Eğitim Ekleme Sayfası</h4>
-<form class="form-group" method="post" action="/Egitim/EgitimEkle">
-    @Html.Label("Başlık")
-    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control", placeholder = "Başlık girin" })
-    @Html.ValidationMessageFor(x => x.Baslik, "")
-    <br />
-    <input type="text" name="Baslik" class="form-control" placeholder="Başlık girin" />
-    <br />
-    <input type="text" name="AltBaslik" class="form-control" placeholder="Alt başlık girin" />
-    <br />
-    <input type="text" name="AltBaslik2" class="form-control" placeholder="Alt başlık 2 girin" />
-    <br />
-    <input type="text" name="Tarih" class="form-control" placeholder="Tarih girin" />
-    <br />
-    <button type="submit" class="btn btn-primary">Eğitim Ekle</button>
-</form> 
+
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Yeni Eğitim Bilgisi Ekle</h2>
+                <p class="modern-card-subtitle">Akademik geçmişinize yeni bir mezuniyet veya okul kaydı ekleyin.</p>
+            </div>
+        </div>
+        <a href="/Egitim/Index" class="btn-modern-outline">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Listeye Dön</span>
+        </a>
+    </div>
+
+    <div class="modern-card-body">
+        <form method="post" action="/Egitim/EgitimEkle">
+            <div class="form-grid-2">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">
+                        <i class="fa-solid fa-building-columns text-primary me-1"></i> Okul / Üniversite Adı
+                    </label>
+                    <input type="text" name="Baslik" class="admin-form-control" placeholder="Örn: Boğaziçi Üniversitesi" required />
+                    @Html.ValidationMessageFor(x => x.Baslik, "", new { @class = "text-danger small mt-1" })
+                </div>
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">
+                        <i class="fa-solid fa-graduation-cap text-primary me-1"></i> Bölüm / Fakülte
+                    </label>
+                    <input type="text" name="AltBaslik" class="admin-form-control" placeholder="Örn: Bilgisayar Mühendisliği" required />
+                </div>
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">
+                        <i class="fa-solid fa-award text-primary me-1"></i> Derece / Detay Bilgisi
+                    </label>
+                    <input type="text" name="AltBaslik2" class="admin-form-control" placeholder="Örn: Lisans Derecesi" />
+                </div>
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">
+                        <i class="fa-solid fa-star text-primary me-1"></i> Genel Not Ortalaması (GNO)
+                    </label>
+                    <input type="text" name="Gno" class="admin-form-control" placeholder="Örn: 3.65 / 4.00" />
+                </div>
+            </div>
+
+            <div class="admin-form-group">
+                <label class="admin-form-label">
+                    <i class="fa-regular fa-calendar-check text-primary me-1"></i> Öğrenim Tarihleri
+                </label>
+                <input type="text" name="Tarih" class="admin-form-control" placeholder="Örn: 2019 - 2023" required />
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="/Egitim/Index" class="btn-modern-outline">İptal</a>
+                <button type="submit" class="btn-modern-primary">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Eğitim Ekle</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
