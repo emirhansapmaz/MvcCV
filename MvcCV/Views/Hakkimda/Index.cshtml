@@ -1,35 +1,88 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblHakkindum>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hakkımda Düzenle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<br />
-<h2>Profil Düzenleme Sayfası</h2>
-<br />
-<form method="post">
-@foreach (var item in Model)
-{
-        <input type="hidden" name="Id" value="@item.Id" />
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-user-pen"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Profil & Hakkımda Bilgileri</h2>
+                <p class="modern-card-subtitle">CV sitenizde yer alan kişisel ve iletişim bilgilerinizi buradan yönetebilirsiniz.</p>
+            </div>
+        </div>
+    </div>
 
-    <label> Ad</label>
-    <input type="text" class="form-control" name="Ad" value="@item.Ad" />
-    <label>Soyad</label>
-    <input type="text" class="form-control" name="Soyad" value="@item.Soyad" />
-    <label>Adres</label>
-    <input type="text" class="form-control" name="Adres" value="@item.Adres" />
-    <label>Mail</label>
-    <input type="text" class="form-control" name="Mail" value="@item.Mail" />
-    <label>Telefon</label>
-    <input type="text" class="form-control" name="Telefon" value="@item.Telefon" />
-    <label>Resim</label>
-    <input type="text" class="form-control" name="Resim" value="@item.Resim" />
-    <label>Açıklama</label>
-    <textarea rows="5" class="form-control" name="Aciklama">@item.Aciklama</textarea>
-   
-}
-<button class="btn btn-success">Güncelle</button>
+    <div class="modern-card-body">
+        <form method="post">
+            @foreach (var item in Model)
+            {
+                <input type="hidden" name="Id" value="@item.Id" />
 
-</form>
+                <div class="form-grid-2">
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">
+                            <i class="fa-solid fa-user text-primary me-1"></i> Ad
+                        </label>
+                        <input type="text" class="admin-form-control" name="Ad" value="@item.Ad" placeholder="Adınızı girin" required />
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">
+                            <i class="fa-regular fa-user text-primary me-1"></i> Soyad
+                        </label>
+                        <input type="text" class="admin-form-control" name="Soyad" value="@item.Soyad" placeholder="Soyadınızı girin" required />
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">
+                            <i class="fa-solid fa-envelope text-primary me-1"></i> E-Posta
+                        </label>
+                        <input type="email" class="admin-form-control" name="Mail" value="@item.Mail" placeholder="ornek@domain.com" required />
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">
+                            <i class="fa-solid fa-phone text-primary me-1"></i> Telefon
+                        </label>
+                        <input type="text" class="admin-form-control" name="Telefon" value="@item.Telefon" placeholder="+90 5xx xxx xx xx" />
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">
+                            <i class="fa-solid fa-location-dot text-primary me-1"></i> Adres / Konum
+                        </label>
+                        <input type="text" class="admin-form-control" name="Adres" value="@item.Adres" placeholder="İstanbul, Türkiye" />
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">
+                            <i class="fa-regular fa-image text-primary me-1"></i> Profil Resim Bağlantısı (URL)
+                        </label>
+                        <input type="text" class="admin-form-control" name="Resim" value="@item.Resim" placeholder="/assets/img/profile.jpg veya https://..." />
+                    </div>
+                </div>
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">
+                        <i class="fa-solid fa-file-lines text-primary me-1"></i> Biyografi / Hakkımda Açıklaması
+                    </label>
+                    <textarea rows="5" class="admin-form-control" name="Aciklama" placeholder="Kendinizden, hedeflerinizden ve uzmanlık alanlarınızdan bahsedin...">@item.Aciklama</textarea>
+                </div>
+            }
+
+            <div class="d-flex justify-content-end mt-4">
+                <button type="submit" class="btn-modern-success">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Değişiklikleri Kaydet</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
