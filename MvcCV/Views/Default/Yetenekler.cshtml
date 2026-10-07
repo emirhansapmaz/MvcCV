@@ -1,36 +1,68 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblYetenekler>
 
-@*
-    
-*@
-@{
-}
-<div class="resume-section-content">
-    <h2 class="mb-5">Yetenekler</h2>
-    <div class="subheading mb-3">Programlama Dilleri ve Araçlar</div>
-    <ul class="list-inline dev-icons">
-        <li class="list-inline-item"><i class="fab fa-html5"></i></li>
-        <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
-        <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
-        <li class="list-inline-item"><i class="fab fa-angular"></i></li>
-        <li class="list-inline-item"><i class="fab fa-react"></i></li>
-        <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
-        <li class="list-inline-item"><i class="fab fa-sass"></i></li>
-        <li class="list-inline-item"><i class="fab fa-less"></i></li>
-        <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
-        <li class="list-inline-item"><i class="fab fa-gulp"></i></li>
-        <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
-        <li class="list-inline-item"><i class="fab fa-npm"></i></li>
-    </ul>
-    <div class="subheading mb-3">Becerilerim</div>
-    <ul class="fa-ul mb-0">
+<!-- Tech Stack Grid -->
+<div class="mb-4">
+    <h5 class="text-white-50 text-uppercase fw-bold mb-3" style="font-size: 0.85rem; letter-spacing: 0.08em;">
+        <i class="fa-solid fa-layer-group text-primary me-2"></i>Teknoloji & Araç Yığını
+    </h5>
+    <div class="tech-grid">
+        <div class="tech-item" title="HTML5">
+            <i class="fa-brands fa-html5"></i>
+            <span>HTML5</span>
+        </div>
+        <div class="tech-item" title="CSS3">
+            <i class="fa-brands fa-css3-alt"></i>
+            <span>CSS3</span>
+        </div>
+        <div class="tech-item" title="JavaScript">
+            <i class="fa-brands fa-js"></i>
+            <span>JavaScript</span>
+        </div>
+        <div class="tech-item" title="React">
+            <i class="fa-brands fa-react"></i>
+            <span>React</span>
+        </div>
+        <div class="tech-item" title="Node.js">
+            <i class="fa-brands fa-node-js"></i>
+            <span>Node.js</span>
+        </div>
+        <div class="tech-item" title="Sass / SCSS">
+            <i class="fa-brands fa-sass"></i>
+            <span>Sass</span>
+        </div>
+        <div class="tech-item" title="Git & GitHub">
+            <i class="fa-brands fa-git-alt"></i>
+            <span>Git</span>
+        </div>
+        <div class="tech-item" title="NPM">
+            <i class="fa-brands fa-npm"></i>
+            <span>NPM</span>
+        </div>
+    </div>
+</div>
+
+<!-- Proficiency Skills with Progress Bars -->
+<div>
+    <h5 class="text-white-50 text-uppercase fw-bold mb-3" style="font-size: 0.85rem; letter-spacing: 0.08em;">
+        <i class="fa-solid fa-chart-simple text-primary me-2"></i>Yetkinlik Düzeyleri
+    </h5>
+    <div class="skills-progress-grid">
         @foreach (var x in Model)
         {
-            <li>
-                <span class="fa-li"><i class="fas fa-check"></i></span>
-                @x.Yetenek
-            </li>
+            var oran = x.Oran ?? 80;
+            <div class="skill-progress-card">
+                <div class="skill-info">
+                    <span class="skill-name">
+                        <i class="fa-solid fa-code-commit"></i>
+                        @x.Yetenek
+                    </span>
+                    <span class="skill-percent">@oran%</span>
+                </div>
+                <div class="skill-track">
+                    <div class="skill-bar" style="width: @oran%;"></div>
+                </div>
+            </div>
         }
-    </ul>
+    </div>
 </div>

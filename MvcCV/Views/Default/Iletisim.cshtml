@@ -1,26 +1,102 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblIletisim>
 
-@*
-    
-*@
-@{
-}
+<div class="contact-grid">
+    <!-- Contact Info Card -->
+    <div class="contact-info-card">
+        <h3 class="contact-info-title">Hemen İletişime Geçin</h3>
+        <p class="contact-info-desc">
+            Yeni bir proje geliştirmek, iş birliği yapmak veya sadece merhaba demek mi istiyorsunuz? Formu doldurarak doğrudan bana ulaşabilirsiniz.
+        </p>
 
-<div class="resume-section-content">
-    <form method="post" action="/Default/MesajGonder">
-        <h2 class="mb-5">İletişim</h2>
-   <label>Ad Soyad</label>
-    <input type="text" class="form-control" name="Kimden" />
+        <div class="contact-method-list">
+            <div class="contact-method-item">
+                <div class="contact-method-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div class="contact-method-content">
+                    <h6>Yanıt Süresi</h6>
+                    <p>En geç 24 saat içinde</p>
+                </div>
+            </div>
 
-    <label>Mail</label>
-    <input type="text" class="form-control" name="Mail" />
+            <div class="contact-method-item">
+                <div class="contact-method-icon">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+                <div class="contact-method-content">
+                    <h6>Çalışma Modeli</h6>
+                    <p>Tam Zamanlı / Freelance / Hibrit</p>
+                </div>
+            </div>
 
-    <label>Konu</label>
-    <input type="text" class="form-control" name="Konu" />
+            <div class="contact-method-item">
+                <div class="contact-method-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="contact-method-content">
+                    <h6>Gizlilik</h6>
+                    <p>Mesajınız güvende tutulur</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <label>Mesaj</label>
-    <input type="text" class="form-control" name="Mesaj" />
-    <button class="btn btn-primary mt-3" type="submit">Gönder</button>
-</form>
+    <!-- Contact Form Card -->
+    <div class="contact-form-card">
+        <form method="post" action="/Default/MesajGonder">
+            <div class="modern-form-group">
+                <label class="modern-form-label">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Ad Soyad</span>
+                </label>
+                <input type="text" 
+                       class="modern-form-input" 
+                       name="Kimden" 
+                       placeholder="Örn: Ahmet Yılmaz" 
+                       required />
+            </div>
+
+            <div class="modern-form-group">
+                <label class="modern-form-label">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>E-Posta Adresi</span>
+                </label>
+                <input type="email" 
+                       class="modern-form-input" 
+                       name="Mail" 
+                       placeholder="Örn: ahmet@example.com" 
+                       required />
+            </div>
+
+            <div class="modern-form-group">
+                <label class="modern-form-label">
+                    <i class="fa-solid fa-heading"></i>
+                    <span>Konu</span>
+                </label>
+                <input type="text" 
+                       class="modern-form-input" 
+                       name="Konu" 
+                       placeholder="Örn: Proje Teklifi / İş Görüşmesi" 
+                       required />
+            </div>
+
+            <div class="modern-form-group">
+                <label class="modern-form-label">
+                    <i class="fa-solid fa-message"></i>
+                    <span>Mesajınız</span>
+                </label>
+                <textarea class="modern-form-textarea" 
+                          name="Mesaj" 
+                          rows="4" 
+                          placeholder="Mesajınızı detaylıca buraya yazabilirsiniz..." 
+                          required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-contact">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Mesajı Gönder</span>
+            </button>
+        </form>
+    </div>
 </div>

@@ -1,25 +1,36 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblEgitim>
 
-
-@*
-    
-*@
-@{
-}
-<div class="resume-section-content">
-    <h2 class="mb-5">Education</h2>
+<div class="modern-timeline">
     @foreach (var x in Model)
     {
-        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="flex-grow-1">
-                <h3 class="mb-0">@x.Baslik</h3>
-                <div class="subheading mb-3">@x.AltBaslik</div>
-                <div>@x.AltBaslik2</div>
-                <p>@x.Gno</p>
+        <div class="timeline-card">
+            <div class="timeline-header">
+                <div>
+                    <h3 class="timeline-title">@x.Baslik</h3>
+                    <div class="timeline-subheading">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>@x.AltBaslik</span>
+                    </div>
+                    @if (!string.IsNullOrEmpty(x.AltBaslik2))
+                    {
+                        <div class="edu-sub2">@x.AltBaslik2</div>
+                    }
+                </div>
+                <div class="d-flex flex-column align-items-end gap-2">
+                    <div class="timeline-date-chip">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>@x.Tarih</span>
+                    </div>
+                    @if (!string.IsNullOrEmpty(x.Gno))
+                    {
+                        <div class="gno-badge">
+                            <i class="fa-solid fa-star"></i>
+                            <span>GNO: @x.Gno</span>
+                        </div>
+                    }
+                </div>
             </div>
-            <div class="flex-shrink-0"><span class="text-primary">@x.Tarih</span></div>
         </div>
-        
     }
 </div>

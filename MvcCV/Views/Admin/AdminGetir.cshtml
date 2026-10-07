@@ -1,21 +1,50 @@
-﻿@model MvcCV.Models.TblAdmin
+@model MvcCV.Models.TblAdmin
+
 @{
-    ViewBag.Title = "AdminGetir";
+    ViewBag.Title = "Admin Güncelle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h4>Admin Güncelleme Sayfası</h4>
-<form method="post">
-    <!-- ID gizli olarak gönderiliyor, ekranda görünmez -->
-    @Html.HiddenFor(x => x.Id)
 
-    @Html.Label("Kullanıcı Adı")
-    @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
-    <br />
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-user-pen"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Yönetici Bilgilerini Güncelle</h2>
+                <p class="modern-card-subtitle">Kullanıcı adı ve şifre bilgilerini güncelleyin.</p>
+            </div>
+        </div>
+        <a href="/Admin/Index" class="btn-modern-outline">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Listeye Dön</span>
+        </a>
+    </div>
 
-    @Html.Label("Şifre")
-    @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
-    <br />
+    <div class="modern-card-body">
+        <form method="post">
+            @Html.HiddenFor(x => x.Id)
 
-    <button type="submit" class="btn btn-primary">Admin Güncelle</button>
-</form>
+            <div class="form-grid-2">
+                <div class="admin-form-group">
+                    @Html.Label("KullaniciAdi", "Kullanıcı Adı", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "admin-form-control", placeholder = "Kullanıcı adı" })
+                </div>
+
+                <div class="admin-form-group">
+                    @Html.Label("Sifre", "Şifre", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Sifre, new { @class = "admin-form-control", placeholder = "Şifre" })
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="/Admin/Index" class="btn-modern-outline">İptal</a>
+                <button type="submit" class="btn-modern-success">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Güncellemeyi Kaydet</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

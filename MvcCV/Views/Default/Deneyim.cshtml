@@ -1,27 +1,24 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblDeneyim>
 
-
-@*
-   
-*@
-@{
-}
-<div class="resume-section-content">
-    
-    
-        <h2 class="mb-5">Experience</h2>
-        @foreach (var x in Model)
-        {
-        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="flex-grow-1">
-                <h3 class="mb-0">@x.Baslik</h3>
-                <div class="subheading mb-3">@x.AltBaslik</div>
-                <p>@x.Aciklama</p>
+<div class="modern-timeline">
+    @foreach (var x in Model)
+    {
+        <div class="timeline-card">
+            <div class="timeline-header">
+                <div>
+                    <h3 class="timeline-title">@x.Baslik</h3>
+                    <div class="timeline-subheading">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>@x.AltBaslik</span>
+                    </div>
+                </div>
+                <div class="timeline-date-chip">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>@x.Tarih</span>
+                </div>
             </div>
-            <div class="flex-shrink-0"><span class="text-primary">@x.Tarih</span></div>
+            <p class="timeline-body-text">@x.Aciklama</p>
         </div>
-        
-      
     }
-        </div>
+</div>

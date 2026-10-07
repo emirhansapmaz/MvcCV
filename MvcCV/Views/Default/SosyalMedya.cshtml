@@ -1,9 +1,19 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblSosyalMedya>
 
-<div class="social-icons">
+<div class="social-icons-wrapper">
     @foreach (var item in Model)
     {
-        <a class="social-icon" href="@item.Link"><i class="@item.Icon"></i></a>
+        if (item.Durum != false)
+        {
+            <a class="modern-social-btn" 
+               href="@item.Link" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               title="@item.Ad"
+               aria-label="@item.Ad">
+                <i class="@item.Icon"></i>
+            </a>
+        }
     }
 </div>

@@ -1,17 +1,26 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblHobilerim>
 
-@*
-    
-*@
-@{
-}
-<div class="resume-section-content">
-    <h2 class="mb-5">İlgi Alanları</h2>
+<div class="cards-bento-grid">
     @foreach (var x in Model)
     {
-        <p>@x.Aciklama1</p>
-        <p class="mb-0">@x.Aciklama2</p>
+        @if (!string.IsNullOrEmpty(x.Aciklama1))
+        {
+            <div class="modern-bento-card">
+                <div class="card-icon-pill">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <p class="card-body-text">@x.Aciklama1</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(x.Aciklama2))
+        {
+            <div class="modern-bento-card">
+                <div class="card-icon-pill">
+                    <i class="fa-solid fa-headphones"></i>
+                </div>
+                <p class="card-body-text">@x.Aciklama2</p>
+            </div>
+        }
     }
-    
 </div>

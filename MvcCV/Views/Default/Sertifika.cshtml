@@ -1,22 +1,25 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblSertifikalar>
 
-@*
-
-*@
-@{
-}
-
-<div class="resume-section-content">
-    <h2 class="mb-5">Sertifikalar</h2>
-    
-    <ul class="fa-ul mb-0">
-        @foreach (var x in Model)
-        {
-            <li>
-                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+<div class="cards-bento-grid">
+    @foreach (var x in Model)
+    {
+        <div class="modern-bento-card">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="card-icon-pill award-badge-icon">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                @if (!string.IsNullOrEmpty(x.Tarih))
+                {
+                    <span class="timeline-date-chip">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        @x.Tarih
+                    </span>
+                }
+            </div>
+            <p class="card-body-text fw-medium text-white mb-0">
                 @x.Aciklama
-            </li>
-        }
-    </ul>
+            </p>
+        </div>
+    }
 </div>
