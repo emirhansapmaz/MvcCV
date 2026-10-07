@@ -1,0 +1,21 @@
+﻿@model MvcCV.Models.TblAdmin
+@{
+    ViewBag.Title = "AdminGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h4>Admin Güncelleme Sayfası</h4>
+<form method="post">
+    <!-- ID gizli olarak gönderiliyor, ekranda görünmez -->
+    @Html.HiddenFor(x => x.Id)
+
+    @Html.Label("Kullanıcı Adı")
+    @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+    <br />
+
+    <button type="submit" class="btn btn-primary">Admin Güncelle</button>
+</form>
