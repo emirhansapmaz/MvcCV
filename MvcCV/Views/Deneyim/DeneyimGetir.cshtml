@@ -1,26 +1,63 @@
-﻿@model MvcCV.Models.TblDeneyim;
+@model MvcCV.Models.TblDeneyim;
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
-    ViewBag.Title = "DeneyimEkle";
+    ViewBag.Title = "Deneyim Düzenle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h4>Deneyim Güncelleme Sayfası</h4>
-<form method="post">
-    @Html.Label("Deneyim ID")
-    @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
-<br />
-    @Html.Label("Başlık")
-    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
-    <br />
-    @Html.Label("Alt Başlık")
-    @Html.TextBoxFor(x => x.AltBaslik, new { @class = "form-control" })
-    <br />
-    @Html.Label("Tarih")
-    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
-    <br />
-    <button type="submit" class="btn btn-primary">Deneyim Güncelle</button>
-</form> 
+
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Deneyim Güncelle</h2>
+                <p class="modern-card-subtitle">Mevcut iş tecrübenizi düzenleyin ve kaydedin.</p>
+            </div>
+        </div>
+        <a href="/Deneyim/Index" class="btn-modern-outline">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Listeye Dön</span>
+        </a>
+    </div>
+
+    <div class="modern-card-body">
+        <form method="post">
+            <div class="form-grid-2">
+                <div class="admin-form-group">
+                    @Html.Label("Deneyim ID", "Kayıt Numarası (ID)", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Id, new { @class = "admin-form-control bg-light", @readonly = "readonly" })
+                </div>
+
+                <div class="admin-form-group">
+                    @Html.Label("Başlık", "Pozisyon / Başlık", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Baslik, new { @class = "admin-form-control", placeholder = "Pozisyon unvanı" })
+                </div>
+
+                <div class="admin-form-group">
+                    @Html.Label("Alt Başlık", "Şirket / Kurum", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.AltBaslik, new { @class = "admin-form-control", placeholder = "Şirket adı" })
+                </div>
+
+                <div class="admin-form-group">
+                    @Html.Label("Tarih", "Çalışma Dönemi / Tarih", new { @class = "admin-form-label" })
+                    @Html.TextBoxFor(x => x.Tarih, new { @class = "admin-form-control", placeholder = "Örn: 2021 - 2024" })
+                </div>
+            </div>
+
+            <div class="admin-form-group">
+                @Html.Label("Aciklama", "İş Tanımı & Açıklama", new { @class = "admin-form-label" })
+                @Html.TextAreaFor(x => x.Aciklama, new { @class = "admin-form-control", rows = "4", placeholder = "Görev ve sorumluluklar" })
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="/Deneyim/Index" class="btn-modern-outline">İptal</a>
+                <button type="submit" class="btn-modern-success">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Güncellemeyi Kaydet</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

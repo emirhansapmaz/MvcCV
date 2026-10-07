@@ -1,19 +1,64 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
-    ViewBag.Title = "DeneyimEkle";
+    ViewBag.Title = "Yeni Deneyim Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h4>Yeni Deneyim Ekleme Sayfası</h4>
-<form class="form-group" method="post" action="/Deneyim/DeneyimEkle">
-    <br />
-    <input type="text" name="Baslik" class="form-control" placeholder="Başlık girin" />
-    <br />
-    <input type="text" name="AltBaslik" class="form-control" placeholder="Alt başlık girin" />
-    <br />
-    <input type="text" name="Tarih" class="form-control" placeholder="Tarih girin" />
-    <br />
-    <button type="submit" class="btn btn-primary">Deneyim Ekle</button>
-</form> 
+
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Yeni Deneyim Ekle</h2>
+                <p class="modern-card-subtitle">Kariyer geçmişinize yeni bir çalışma deneyimi ekleyin.</p>
+            </div>
+        </div>
+        <a href="/Deneyim/Index" class="btn-modern-outline">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Listeye Dön</span>
+        </a>
+    </div>
+
+    <div class="modern-card-body">
+        <form method="post" action="/Deneyim/DeneyimEkle">
+            <div class="form-grid-2">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">
+                        <i class="fa-solid fa-briefcase text-primary me-1"></i> Pozisyon / Başlık
+                    </label>
+                    <input type="text" name="Baslik" class="admin-form-control" placeholder="Örn: Senior Full Stack Developer" required />
+                </div>
+
+                <div class="admin-form-group">
+                    <label class="admin-form-label">
+                        <i class="fa-solid fa-building text-primary me-1"></i> Şirket / Kurum
+                    </label>
+                    <input type="text" name="AltBaslik" class="admin-form-control" placeholder="Örn: Acme Teknoloji A.Ş." required />
+                </div>
+            </div>
+
+            <div class="admin-form-group">
+                <label class="admin-form-label">
+                    <i class="fa-regular fa-calendar-days text-primary me-1"></i> Çalışma Dönemi / Tarih
+                </label>
+                <input type="text" name="Tarih" class="admin-form-control" placeholder="Örn: Ocak 2022 - Devam Ediyor" required />
+            </div>
+
+            <div class="admin-form-group">
+                <label class="admin-form-label">
+                    <i class="fa-solid fa-align-left text-primary me-1"></i> İş Tanımı & Sorumluluklar
+                </label>
+                <textarea name="Aciklama" rows="4" class="admin-form-control" placeholder="Bu pozisyondaki sorumluluklarınız ve kullandığınız teknolojiler..."></textarea>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="/Deneyim/Index" class="btn-modern-outline">İptal</a>
+                <button type="submit" class="btn-modern-primary">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Deneyim Ekle</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
