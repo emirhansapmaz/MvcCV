@@ -1,61 +1,67 @@
-﻿@using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblIletisim>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gelen Mesajlar";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!-- html, head veya body etiketleri burada kullanılmaz, doğrudan içeriğe başlanır -->
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="tab-content">
-
-                            <div class="tab-pane active" id="timeline">
-                                <!-- The timeline -->
-                                <div class="timeline timeline-inverse">
-                                    @foreach (var item in Model)
-                                    {
-                                        <div class="time-label">
-                                            <span class="bg-danger">
-                                                @item.Tarih
-                                            </span>
-                                        </div>
-
-                                        <div>
-                                            <!-- BİRİNCİ AÇIK DİV -->
-                                            <i class="fas fa-comments bg-warning"></i>
-
-                                            <div class="timeline-item">
-                                                <!-- İKİNCİ AÇIK DİV -->
-                                                <span class="time"><i class="far fa-clock"></i> @item.Mail</span>
-                                                <!-- Ad Soyad ve Konu arasına bir adet boşluk eklendi -->
-                                                <h3 class="timeline-header"><a href="#">@item.Kimden</a> @item.Konu</h3>
-
-                                                <div class="timeline-body">
-                                                    @item.Mesaj
-                                                </div>
-
-                                                <div class="timeline-footer">
-                                                   
-                                                </div>
-                                            </div> <!-- İKİNCİ AÇIK DİVİN KAPATILMASI EKLENDİ -->
-                                        </div> <!-- BİRİNCİ AÇIK DİVİN KAPATILMASI EKLENDİ -->
-                                    }
-                                </div>
-                            </div>
-                            <!-- /.tab-content -->
-                        </div>
-                    </div><!-- /.card-body -->
-                </div>
-                <!-- /.card -->
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-inbox"></i>
             </div>
-            <!-- /.col -->
+            <div>
+                <h2 class="modern-card-title">Gelen İletişim Mesajları</h2>
+                <p class="modern-card-subtitle">Portfolyo siteniz üzerinden ziyaretçilerin ilettiği mesajlar.</p>
+            </div>
         </div>
-        <!-- /.row -->
-    </div><!-- /.container-fluid -->
-</section>
+        <span class="admin-badge admin-badge-primary">
+            <i class="fa-solid fa-envelope"></i>
+            Toplam: @Model.Count Mesaj
+        </span>
+    </div>
+
+    <div class="modern-card-body">
+        @if (!Model.Any())
+        {
+            <div class="text-center py-5 text-muted">
+                <i class="fa-regular fa-envelope-open fa-3x mb-3 text-secondary"></i>
+                <h5>Henüz hiç mesaj bulunmuyor.</h5>
+                <p class="small">Sitenizden gönderilen yeni mesajlar burada görüntülenecektir.</p>
+            </div>
+        }
+        else
+        {
+            <div class="admin-msg-timeline">
+                @foreach (var item in Model.OrderByDescending(x => x.Id))
+                {
+                    <div class="admin-msg-card">
+                        <div class="admin-msg-header">
+                            <div class="admin-msg-sender">
+                                <i class="fa-solid fa-circle-user text-primary fa-lg"></i>
+                                <span>@item.Kimden</span>
+                                <span class="admin-msg-subject">&bull; @item.Konu</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <a href="mailto:@item.Mail" class="admin-badge admin-badge-gray text-decoration-none">
+                                    <i class="fa-regular fa-envelope text-primary"></i>
+                                    @item.Mail
+                                </a>
+                                <span class="admin-badge admin-badge-gray">
+                                    <i class="fa-regular fa-clock text-primary"></i>
+                                    @item.Tarih
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="admin-msg-body">
+                            @item.Mesaj
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
