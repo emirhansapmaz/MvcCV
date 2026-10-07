@@ -1,67 +1,70 @@
-﻿using MvcCV.Models;
+@using MvcCV.Models;
 @model List<TblSertifikalar>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sertifika Listesi";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<body class="hold-transition sidebar-mini">
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-
-                <!-- /.col -->
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header p-2">
-                            
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                           
-                                <div class="tab-pane" id="timeline">
-                                    <!-- The timeline -->
-                                    <div class="timeline timeline-inverse">
-                                        <!-- timeline time label -->
-                                    @foreach (var item in Model)
-                                        {
-                                            <div class="time-label">
-                                                <a href="/Sertifika/SertifikaGetir/@item.Id" class="btn btn-success">
-                                                <span>
-                                                    @item.Tarih
-                                                </span>
-                                            </a>
-                                            </div>
-                                            <!-- /.timeline-label -->
-                                            <!-- timeline item -->
-                                           <div>
-                                            <i class="fas fa-comment bg-primary"></i>
-                                             <div class="timeline-item">
-       
-                                                    <div class="timeline-body">
-                                                        @item.Aciklama
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        }
-
-                                        </div>
-                                       <a href="/Sertifika/SertifikaEkle" class="btn btn-info">Ekle</a>
-                                      
-                                        </div>
-                        </div>
-                    </div>
-                </div>
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-award"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Sertifikalarım & Başarılar</h2>
+                <p class="modern-card-subtitle">Kazandığınız lisans, kurs ve ödül sertifikalarını buradan yönetin.</p>
             </div>
         </div>
+        <a href="/Sertifika/SertifikaEkle" class="btn-modern-primary">
+            <i class="fa-solid fa-plus"></i>
+            <span>Yeni Sertifika Ekle</span>
+        </a>
+    </div>
 
-                                                         
-        </section>
-</body>
-</html>
+    <div class="modern-card-body p-0">
+        <div class="modern-table-responsive">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th style="width: 70px;">ID</th>
+                        <th>Sertifika / Başarı Açıklaması</th>
+                        <th style="width: 160px;">Alınış Tarihi</th>
+                        <th style="width: 170px;" class="text-end">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><span class="admin-badge admin-badge-gray">#@item.Id</span></td>
+                            <td class="fw-semibold text-dark">
+                                <i class="fa-solid fa-certificate text-warning me-2"></i>
+                                @item.Aciklama
+                            </td>
+                            <td>
+                                <span class="admin-badge admin-badge-gray">
+                                    <i class="fa-regular fa-calendar-check text-primary"></i>
+                                    @item.Tarih
+                                </span>
+                            </td>
+                            <td class="text-end">
+                                <div class="d-inline-flex gap-2">
+                                    <a href="/Sertifika/SertifikaGetir/@item.Id" class="btn-action-edit" title="Düzenle">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        <span>Düzenle</span>
+                                    </a>
+                                    <a href="/Sertifika/SertifikaSil/@item.Id" class="btn-action-delete" title="Sil" onclick="return confirm('Bu sertifikayı silmek istediğinize emin misiniz?');">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                        <span>Sil</span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

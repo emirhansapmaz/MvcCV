@@ -1,24 +1,55 @@
-﻿@model MvcCV.Models.TblSertifikalar;
+@model MvcCV.Models.TblSertifikalar;
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
     ViewBag.Title = "Sertifika Düzenle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<br />
-<h4>Sertifika Güncelleme Sayfası</h4>
-<form method="post">
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Sertifika Bilgisi Güncelle</h2>
+                <p class="modern-card-subtitle">Mevcut sertifika veya başarı kaydınızı düzenleyin.</p>
+            </div>
+        </div>
+        <a href="/Sertifika/Index" class="btn-modern-outline">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Listeye Dön</span>
+        </a>
+    </div>
 
-    @Html.Label("Sertifika Açıklaması")
-    @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
-    <br />
-    @Html.Label("Tarih")
-    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <div class="modern-card-body">
+        <form method="post">
+            @Html.HiddenFor(x => x.Id)
 
-    <br />
-    <button type="submit" class="btn btn-success">Güncelle</button>
-    <a href="/Sertifika/SertifikaSil/@Model.Id" class="btn btn-danger">Sil</a>
-</form>
+            <div class="admin-form-group">
+                @Html.Label("Aciklama", "Sertifika / Başarı Açıklaması", new { @class = "admin-form-label" })
+                @Html.TextBoxFor(x => x.Aciklama, new { @class = "admin-form-control", placeholder = "Sertifika adı veya açıklaması" })
+            </div>
+
+            <div class="admin-form-group">
+                @Html.Label("Tarih", "Alınış Tarihi", new { @class = "admin-form-label" })
+                @Html.TextBoxFor(x => x.Tarih, new { @class = "admin-form-control", placeholder = "Örn: 2023" })
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <a href="/Sertifika/SertifikaSil/@Model.Id" class="btn-modern-outline text-danger border-danger" onclick="return confirm('Bu sertifikayı silmek istediğinize emin misiniz?');">
+                    <i class="fa-solid fa-trash-can"></i>
+                    <span>Kaydı Sil</span>
+                </a>
+
+                <div class="d-flex gap-2">
+                    <a href="/Sertifika/Index" class="btn-modern-outline">İptal</a>
+                    <button type="submit" class="btn-modern-success">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Güncellemeyi Kaydet</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

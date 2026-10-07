@@ -1,18 +1,46 @@
-﻿@model MvcCV.Models.TblSertifikalar;
+@model MvcCV.Models.TblSertifikalar;
+
 @{
-    ViewBag.Title = "Sertifika Ekle";
+    ViewBag.Title = "Yeni Sertifika Ekle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<br />
-<h4>Sertifika Ekleme Sayfası</h4>
-<form method="post">
 
-    @Html.Label("Sertifika Açıklaması")
-    @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
-    <br />
-    @Html.Label("Tarih")
-    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+<div class="modern-card">
+    <div class="modern-card-header">
+        <div class="card-header-left">
+            <div class="card-header-icon">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div>
+                <h2 class="modern-card-title">Yeni Sertifika Ekle</h2>
+                <p class="modern-card-subtitle">Profilinize yeni bir sertifika veya lisans bilgisi ekleyin.</p>
+            </div>
+        </div>
+        <a href="/Sertifika/Index" class="btn-modern-outline">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Listeye Dön</span>
+        </a>
+    </div>
 
-    <br />
-    <button type="submit" class="btn btn-primary">Ekle</button>
-</form>
+    <div class="modern-card-body">
+        <form method="post">
+            <div class="admin-form-group">
+                @Html.Label("Aciklama", "Sertifika / Kurs / Başarı Açıklaması", new { @class = "admin-form-label" })
+                @Html.TextBoxFor(x => x.Aciklama, new { @class = "admin-form-control", placeholder = "Örn: AWS Certified Solutions Architect Associate" })
+            </div>
+
+            <div class="admin-form-group">
+                @Html.Label("Tarih", "Alınış Tarihi", new { @class = "admin-form-label" })
+                @Html.TextBoxFor(x => x.Tarih, new { @class = "admin-form-control", placeholder = "Örn: Mayıs 2023" })
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="/Sertifika/Index" class="btn-modern-outline">İptal</a>
+                <button type="submit" class="btn-modern-primary">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Sertifikayı Kaydet</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
